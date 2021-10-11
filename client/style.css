@@ -1,0 +1,25 @@
+[v-cloak] {
+  display: none;
+}
+#map {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 7100%;
+  height: 500px;
+  cursor: pointer;
+  border: solid 2px black;
+  border-radius: 4px;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #dcdcdc;
+}
+.tittle {
+  content: attr(tooltip);
+  border: #777;
+  background-color: #aaa;
+  padding: 5px;
+}

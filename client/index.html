@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLhqc0PXIHDkkaeYghZgzlFf3xy2wnRgQ"></script>
+<title>Calculator-cordinate</title>
+</head>
+<body >
+  <div class="container pt-3" id="app" v-cloak>
+      <div class="container-fluid justify-content-start">
+        <button class="btn btn-outline-success me-2" @click="showFieldEnter" type="button">Choose points on map</button>
+        <button class="btn btn-sm btn-outline-secondary"  @click="showFieldEnter" type="button">Enter coordinate manual</button>
+      </div>
+    <div class="container pt-3" id="map"></div>
+      <form v-if="!showField" class="form-inline mb-3" @submit.prevent="calcDistance">
+        <button class="btn btn-primary" type="submit" :disabled="!canCreateChoosePoint">Calculate distance</button>        
+          <div v-if="choosePoints[0]">
+            <field v-bind:point="choosePoints"/>
+          </div>
+        </form>
+
+<div class="container pt-3" v-if="showField">
+  <button class="btn btn-secondary" @click="addField">add field</button>
+  <form  class="form-inline mb-3" @submit.prevent="calcDistanceManual">
+      <div>
+        <div >
+          <label for="point"  class="mr-3">Point 1</label>
+          <input type="text" class="form-control" id="lat1" v-model="manualPoint[0].lat" placeholder="lat 1">
+          <input type="text" class="form-control" id="lng1" v-model="manualPoint[0].lng"  placeholder="lng 1">
+        </div>
+        <div >
+          <label for="point"  class="mr-3">Point 2</label>
+          <input type="text" class="form-control" id="lat2" v-model="manualPoint[1].lat" placeholder="lat 1">
+          <input type="text" class="form-control" id="lng2" v-model="manualPoint[1].lng"  placeholder="lng 1">
+        </div>
+        <div v-if="manualPoint.length === 3">
+          <label for="point"  class="mr-3">Point 3</label>
+          <input type="text" class="form-control" id="lat3" v-model="manualPoint[2].lat" placeholder="lat 1">
+          <input type="text" class="form-control" id="lng3"  v-model="manualPoint[2].lng"  placeholder="lng 1">
+        </div>
+        <div v-if="manualPoint.length === 4">
+          <label for="point"  class="mr-3">Point 4</label>
+          <input type="text" class="form-control" id="lat4" v-model="manualPoint[3].lat" placeholder="lat 1">
+          <input type="text" class="form-control" id="lng4" v-model="manualPoint[3].lng"  placeholder="lng 1">
+        </div>
+        <div v-if="manualPoint.length === 5">
+          <label for="point"  class="mr-3">Point 3</label>
+          <input type="text" class="form-control" id="lat5" v-model="manualPoint[4].lat" placeholder="lat 1">
+          <input type="text" class="form-control" id="lng5" v-model="manualPoint[4].lng"  placeholder="lng 1">
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" :disabled="!canCreateManual">Calculate distance</button>   
+    </form>
+</div>
+    <div v-if="loading">
+        <loader/>
+    </div >
+    <div class="card" v-else v-for="point in points">
+      <h5 class="card-header">distance = {{point.distance}} km</h5>
+      <div class="card-body">
+        <p class="card-text" v-if="point[0]">Point1 {{point[0].lat}} - {{point[0].lng}}</p>
+        <p class="card-text" v-if="point[1]">Point2 {{point[1].lat}} - {{point[1].lng}}</p>
+        <p class="card-text" v-if="point[2]">Point3 {{point[2].lat}} - {{point[2].lng}}</p>
+        <p class="card-text" v-if="point[3]">Point4 {{point[3].lat}} - {{point[3].lng}}</p>
+        <p class="card-text" v-if="point[4]">Point5 {{point[4].lat}} - {{point[4].lng}}</p>
+        <p class="card-text" v-if="point[5]">Point6 {{point[5].lat}} - {{point[5].lng}}</p>
+        <p class="card-text" v-if="point[6]">Point7 {{point[6].lat}} - {{point[6].lng}}</p>
+        <button class="btn btn-danger" @click="deletePoint(point.id)">Delete point</button>
+      </div>
+    </div>    
+    <script type="module" src="frontend.js"></script>   
+</body>
+</html>
