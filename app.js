@@ -4,7 +4,7 @@ const path = require("path");
 const { v4 } = require("uuid");
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 let POINTS = [];
 
@@ -50,10 +50,10 @@ app.delete("/api/points/:id", (req, res) => {
   res.status(200).json({ message: "Point delete" });
 });
 
-app.use(express.static(path.resolve(__dirname, "../", "client")));
+app.use(express.static(path.resolve(__dirname,  "client")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../", "client", "index.html"));
+  res.sendFile(path.resolve(__dirname,  "client", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`server has been started on ${PORT}`));
