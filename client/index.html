@@ -34,23 +34,23 @@
         </div>
         <div >
           <label for="point"  class="mr-3">Point 2</label>
-          <input type="text" class="form-control" id="lat2" v-model="manualPoint[1].lat" placeholder="lat 1">
-          <input type="text" class="form-control" id="lng2" v-model="manualPoint[1].lng"  placeholder="lng 1">
+          <input type="text" class="form-control" id="lat2" v-model="manualPoint[1].lat" placeholder="lat 2">
+          <input type="text" class="form-control" id="lng2" v-model="manualPoint[1].lng"  placeholder="lng 2">
         </div>
         <div v-if="manualPoint.length === 3">
           <label for="point"  class="mr-3">Point 3</label>
-          <input type="text" class="form-control" id="lat3" v-model="manualPoint[2].lat" placeholder="lat 1">
-          <input type="text" class="form-control" id="lng3"  v-model="manualPoint[2].lng"  placeholder="lng 1">
+          <input type="text" class="form-control" id="lat3" v-model="manualPoint[2].lat" placeholder="lat 3">
+          <input type="text" class="form-control" id="lng3"  v-model="manualPoint[2].lng"  placeholder="lng 3">
         </div>
         <div v-if="manualPoint.length === 4">
           <label for="point"  class="mr-3">Point 4</label>
-          <input type="text" class="form-control" id="lat4" v-model="manualPoint[3].lat" placeholder="lat 1">
-          <input type="text" class="form-control" id="lng4" v-model="manualPoint[3].lng"  placeholder="lng 1">
+          <input type="text" class="form-control" id="lat4" v-model="manualPoint[3].lat" placeholder="lat 4">
+          <input type="text" class="form-control" id="lng4" v-model="manualPoint[3].lng"  placeholder="lng 4">
         </div>
         <div v-if="manualPoint.length === 5">
           <label for="point"  class="mr-3">Point 3</label>
-          <input type="text" class="form-control" id="lat5" v-model="manualPoint[4].lat" placeholder="lat 1">
-          <input type="text" class="form-control" id="lng5" v-model="manualPoint[4].lng"  placeholder="lng 1">
+          <input type="text" class="form-control" id="lat5" v-model="manualPoint[4].lat" placeholder="lat 5">
+          <input type="text" class="form-control" id="lng5" v-model="manualPoint[4].lng"  placeholder="lng 5">
         </div>
       </div>
       <button class="btn btn-primary" type="submit" :disabled="!canCreateManual">Calculate distance</button>   
